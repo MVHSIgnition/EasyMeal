@@ -13,11 +13,12 @@ try:
 except socket.error as e:
     print(str(e))
 
-image = s.recv(140000)
+image = s.recv(4096)
 
-#image.decode()
-image = Image.frombytes("RGB", (500,500), image)
-image.save("%d.png" % 123, "PNG")
+image.decode('utf-8')
+print(image)
+#image = Image.frombytes("RGB", (500,500), image)
+#image.save("%d.png" % 123, "PNG")
 #with open("test.ppk", "wb") as f:
 #    f.write(image)
     
