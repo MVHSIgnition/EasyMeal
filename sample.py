@@ -216,7 +216,7 @@ if __name__ == '__main__':
         main()
         if input("exit? y/n ") == "y":
             #pprint.pprint(restaurants)
-            with open('user_data.json', 'rb') as f:
+            with open('user_data.dat', 'rb') as f:
                 l = pickle.load(f)
 
             for i in restaurants:
@@ -224,6 +224,6 @@ if __name__ == '__main__':
 
             pprint.pprint(l)
                 
-            with open('user_data.json', 'ab') as f:
+            with open('user_data.dat', 'ab') as f:
                 pickle.dump(l, f)
             break
