@@ -308,7 +308,7 @@ a[href^="tel:"] {
   width: 75px;
   height: 75px;
   font-size: 60px;
-  line-height: 40px;
+  line-height: 80px;
   color: #fff;
   background: #adabad;
   text-align: center;
@@ -374,7 +374,7 @@ a[href^="tel:"] {
   height: 30px;
   width: 30px;
   font-size: 18px;
-  line-height: 15px;
+  line-height: 30px;
 }
 @media (max-width: 979px) {
   .toggle-menu-container .sf-menu-toggle {
@@ -405,7 +405,7 @@ a[href^="tel:"] {
   color: #585858;
   background-color: transparent;
   font: 400 15px 'Open Sans', sans-serif;
-  line-height: 15px;
+  line-height: 30px;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -450,7 +450,7 @@ a[href^="tel:"] {
   width: 115px;
   height: 115px;
   font-size: 88px;
-  line-height: 50px;
+  line-height: 110px;
   color: #fff;
   background: #b6b2b3;
   position: fixed;
@@ -529,7 +529,7 @@ a[href^="tel:"] {
   top: 10px;
   font-family: 'FontAwesome';
   font-size: 60px;
-  line-height: 30px;
+  line-height: 60px;
 }
 @media (max-width: 767px) {
   .parallax {
@@ -573,7 +573,7 @@ header .nav {
   overflow: hidden;
   font-family: 'Yesteryear', cursive;
   font-size: 60px;
-  line-height: 32px;
+  line-height: 64px;
   color: #ffffff;
 }
 /*=======================================================
