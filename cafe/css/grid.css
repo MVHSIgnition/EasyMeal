@@ -144,6 +144,9 @@ table {
   content: " ";
   display: table;
 }
+.boxed {
+  border: 1px;
+}
 .container:after,
 .container-fluid:after,
 .row:after {
