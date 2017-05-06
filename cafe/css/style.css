@@ -529,7 +529,7 @@ a[href^="tel:"] {
   top: 10px;
   font-family: 'FontAwesome';
   font-size: 60px;
-  line-height: 60px;
+  line-height: 30px;
 }
 @media (max-width: 767px) {
   .parallax {
