@@ -10,7 +10,7 @@ body {
   color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  line-height: 5px;
+  line-height: 10px;
   font-weight: 400px;
   -webkit-text-size-adjust: none;
   color: #5f5e4e;
@@ -212,7 +212,7 @@ a[href^="tel:"] {
 .sf-menu {
   font-family: 'Open Sans', sans-serif;
   font-size: 24px;
-  line-height: 24px;
+  line-height: 48px;
   font-weight: 300;
 }
 .sf-menu > li > a {
