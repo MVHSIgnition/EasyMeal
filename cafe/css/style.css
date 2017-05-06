@@ -10,7 +10,7 @@ body {
   color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  line-height: 20px;
+  line-height: 5px;
   font-weight: 400px;
   -webkit-text-size-adjust: none;
   color: #5f5e4e;
@@ -23,7 +23,7 @@ h2 {
   text-align: center;
   font-family: 'Open Sans', sans-serif;
   font-size: 62px;
-  line-height: 82px;
+  line-height: 80px;
   font-weight: 300;
   color: #823f3f;
 }
@@ -37,7 +37,7 @@ h2 em {
   display: block;
   font-family: 'Yesteryear', cursive;
   font-size: 100px;
-  line-height: 82px;
+  line-height: 40px;
   font-weight: 400;
 }
 @media (max-width: 767px) {
@@ -49,7 +49,7 @@ h2 em {
 h3 {
   font-family: 'Open Sans', sans-serif;
   font-size: 18px;
-  line-height: 20px;
+  line-height: 40px;
   font-weight: 400;
   color: #393328;
 }
@@ -59,7 +59,7 @@ p a:hover {
 figcaption {
   font-family: 'Yesteryear', cursive;
   font-size: 30px;
-  line-height: 40px;
+  line-height: 80px;
   font-weight: 400;
   color: #393328;
 }
@@ -308,7 +308,7 @@ a[href^="tel:"] {
   width: 75px;
   height: 75px;
   font-size: 60px;
-  line-height: 75px;
+  line-height: 40px;
   color: #fff;
   background: #adabad;
   text-align: center;
@@ -374,7 +374,7 @@ a[href^="tel:"] {
   height: 30px;
   width: 30px;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 15px;
 }
 @media (max-width: 979px) {
   .toggle-menu-container .sf-menu-toggle {
@@ -405,7 +405,7 @@ a[href^="tel:"] {
   color: #585858;
   background-color: transparent;
   font: 400 15px 'Open Sans', sans-serif;
-  line-height: 30px;
+  line-height: 15px;
   border: none;
   border-radius: 0;
   box-shadow: none;
@@ -450,7 +450,7 @@ a[href^="tel:"] {
   width: 115px;
   height: 115px;
   font-size: 88px;
-  line-height: 115px;
+  line-height: 50px;
   color: #fff;
   background: #b6b2b3;
   position: fixed;
@@ -529,7 +529,7 @@ a[href^="tel:"] {
   top: 10px;
   font-family: 'FontAwesome';
   font-size: 60px;
-  line-height: 60px;
+  line-height: 30px;
 }
 @media (max-width: 767px) {
   .parallax {
@@ -573,7 +573,7 @@ header .nav {
   overflow: hidden;
   font-family: 'Yesteryear', cursive;
   font-size: 60px;
-  line-height: 64px;
+  line-height: 32px;
   color: #ffffff;
 }
 /*=======================================================
@@ -768,7 +768,7 @@ main {
 }
 .gallery em {
   font-size: 36px;
-  line-height: 44px;
+  line-height: 22px;
   color: #823f3f;
 }
 .gallery_col-1 {
@@ -859,7 +859,7 @@ main {
   }
   .gallery_caption em {
     font-size: 24px;
-    line-height: 32px;
+    line-height: 16px;
   }
   .gallery_caption * + p {
     margin-top: 10px;
@@ -995,7 +995,7 @@ footer .tm {
 .box-3 h2 {
   text-align: left;
   font-size: 48px;
-  line-height: 58px;
+  line-height: 29px;
 }
 * + .box-3 {
   margin-top: 50px;
