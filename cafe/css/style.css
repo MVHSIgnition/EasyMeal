@@ -1062,7 +1062,7 @@ Horizontal Position:
 0px
 Blur Radius:
 0px
- <a href="file:///Users/Ajay/Documents/yelperhelper/cafe/restraunt-results.html" class="myButton">Find Restaurants</a>
+ <a class="myButton">Find Restaurants</a>
 
 .myButton {
 	-moz-box-shadow:inset -15px -9px 50px 16px #e67a73;
