@@ -103,7 +103,7 @@ section {
   display: block;
 }
 body {
-  line-height: 1;
+  line-height: 90%;
 }
 ol,
 ul {
@@ -134,7 +134,7 @@ table {
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
 }
 .container:before,
 .container-fluid:before,
@@ -147,6 +147,12 @@ table {
 }
 .boxed {
   border: 1px;
+}
+.btnbox {
+  width: 875px;
+  border: 10px solid black;
+  padding: 35px;
+  margin: 25px;
 }
 .container:after,
 .container-fluid:after,
