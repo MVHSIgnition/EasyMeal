@@ -10,7 +10,7 @@ body {
   color: #333;
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
-  line-height: 10px;
+  line-height: 40px;
   font-weight: 400px;
   -webkit-text-size-adjust: none;
   color: #5f5e4e;
@@ -529,7 +529,7 @@ a[href^="tel:"] {
   top: 10px;
   font-family: 'FontAwesome';
   font-size: 60px;
-  line-height: 60px;
+  line-height: 30px;
 }
 @media (max-width: 767px) {
   .parallax {
@@ -656,6 +656,14 @@ main {
   line-height: 20px;
   font-weight: 400;
   color: #393328;
+  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eb675e), color-stop(1, #e4685d));
+  background:-moz-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+  background:-webkit-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+  background:-o-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+  background:-ms-linear-gradient(top, #eb675e 5%, #e4685d 100%);
+  background:linear-gradient(to bottom, #eb675e 5%, #e4685d 100%);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb675e', endColorstr='#e4685d',GradientType=0);
+  background-color:#eb675e;
 }
 .btn:before,
 .btn:after {
@@ -1026,42 +1034,6 @@ footer .tm {
 .map_locations {
   display: none;
 }
-
-Text
-
-Find Restaurants
-
-classname: myButton
-
-Font Size:
-22px
-  bold   italic
-Size
-Vertical Size:
-29px
-Horizontal Size:
-51px
-Border
-Border Radius:
-9px
-Border Size:
-0px
-  Box Shadow   /   inset
-Vertical Position:
--9px
-Horizontal Position:
--15px
-Blur Radius:
-50px
-Spread Radius:
-16px
-  Text Shadow
-Vertical Position:
-1px
-Horizontal Position:
-0px
-Blur Radius:
-0px
 
 
 .myButton {
