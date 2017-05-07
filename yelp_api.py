@@ -208,7 +208,7 @@ def get_business_review(business_id):
     bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
     reviews = request(API_HOST, BUSINESS_PATH+business_id+'/reviews', bearer_token)
 
-    return reviews['reviews'][0]['text']
+    return (reviews['reviews'][0]['text'], reviews['reviews'][0]['url'])
 
 def convertFormat(response):
     categories = [category['alias'] for category in response['categories']]
