@@ -1,5 +1,6 @@
 import sys
 import yelp_api
+import pickle
 try:
     sys.path.append('/opt/python3/lib/python3.4/site-packages')
 except:
@@ -26,34 +27,42 @@ class subscribeCallback(SubscribeCallback):
     def presence(self, pubnub, presence):
         pass  # handle incoming presence data
     def message(self, pubnub, message):
-        best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
-        review = yelp_api.get_business_review(best_restaurants[0]['id'])
-        review1 = yelp_api.get_business_review(best_restaurants[1]['id'])
-        review2 = yelp_api.get_business_review(best_restaurants[2]['id'])
-        
-        loc = best_restaurants[0]['location']
-        name = best_restaurants[0]['name']
-        rating = best_restaurants[0]['rating']
-        price = best_restaurants[0]['price']
-        image = best_restaurants[0]['image_url']
-        url = best_restaurants[0]['url']
-        loc1 = best_restaurants[1]['location']
-        name1 = best_restaurants[1]['name']
-        rating1 = best_restaurants[1]['rating']
-        price1 = best_restaurants[1]['price']
-        image1 = best_restaurants[1]['image_url']
-        url1 = best_restaurants[1]['url']
-        loc2 = best_restaurants[2]['location']
-        name2 = best_restaurants[2]['name']
-        rating2 = best_restaurants[2]['rating']
-        price2 = best_restaurants[2]['price']
-        image2 = best_restaurants[2]['image_url']
-        url2 = best_restaurants[2]['url']
-        print(name,name1,name2)
-        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image,"url":url, "review":review},
-                                                          {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1, "review":review1}, 
-                                                          {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2, "review":review2}]).async(publishCallback)
-    
+        if message.message['cmdtype'] == "request":
+            best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
+            review = yelp_api.get_business_review(best_restaurants[0]['id'])
+            review1 = yelp_api.get_business_review(best_restaurants[1]['id'])
+            review2 = yelp_api.get_business_review(best_restaurants[2]['id'])
+            id1 = best_restaurants[0]['id']
+            id2 = best_restaurants[1]['id']
+            id3 = best_restaurants[2]['id']
+            loc = best_restaurants[0]['location']
+            name = best_restaurants[0]['name']
+            rating = best_restaurants[0]['rating']
+            price = best_restaurants[0]['price']
+            image = best_restaurants[0]['image_url']
+            url = best_restaurants[0]['url']
+            loc1 = best_restaurants[1]['location']
+            name1 = best_restaurants[1]['name']
+            rating1 = best_restaurants[1]['rating']
+            price1 = best_restaurants[1]['price']
+            image1 = best_restaurants[1]['image_url']
+            url1 = best_restaurants[1]['url']
+            loc2 = best_restaurants[2]['location']
+            name2 = best_restaurants[2]['name']
+            rating2 = best_restaurants[2]['rating']
+            price2 = best_restaurants[2]['price']
+            image2 = best_restaurants[2]['image_url']
+            url2 = best_restaurants[2]['url']
+            print(name,name1,name2)
+            pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image,"url":url, "review":review, "id":id1},
+                                                              {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1, "review":review1, "id":id2}, 
+                                                              {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2, "review":review2, "id":id3}]).async(publishCallback)
+        elif message.message['cmdtype'] == "append":
+            with open("restaurant_data.dat", "rb") as f:
+                rl = pickle.load(f)
+            rl.append(yelp_api.get_business_by_id(message.message['id']))
+            with open("restaurant_data.dat", "wb") as f:
+                pickle.dump(rl,f)
 
 
 pubnub.add_listener(subscribeCallback())
