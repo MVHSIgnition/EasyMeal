@@ -79,6 +79,27 @@
                         <form id="contact-form" class='contact-form'>
                             <div class="contact-form-loader"></div>
                             <fieldset>
+                              <label class="name">
+                                  First Name:
+                                  <input type="text" name="First_Name" placeholder="" value=""
+                                         data-constraints="@Required "/>
+                                  <span class="empty-message">*This field is required.</span>
+                                  <span class="error-message">*This is not a valid username.</span>
+                              </label>
+                              <label class="name">
+                                  Last Name:
+                                  <input type="text" name="Last_Name" placeholder="" value=""
+                                         data-constraints="@Required "/>
+                                  <span class="empty-message">*This field is required.</span>
+                                  <span class="error-message">*This is not a valid username.</span>
+                              </label>
+                              <label class="email">
+                                  Email:
+                                  <input type="text" name="Email" placeholder="" value=""
+                                         data-constraints="@Required "/>
+                                  <span class="empty-message">*This field is required.</span>
+                                  <span class="error-message">*This is not a valid username.</span>
+                              </label>
                                 <label class="Username">
                                     Username:
                                     <input type="text" name="Username" placeholder="" value=""
@@ -96,7 +117,7 @@
                                 </label>
 
                                 <div class="btn-wr">
-                                    <a class="" href="file:///Users/Ajay/Documents/yelperhelper/cafe/index-5.html#" data-type="reset">Don't have an account?</br>Create one here.</a>
+                                    <a class="" href="#" data-type="reset">Don't have an account?</br>Create one here.</a>
                                 </div>
                             </fieldset>
                             <div class="modal fade response-message">
