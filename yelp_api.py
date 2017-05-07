@@ -48,7 +48,8 @@ SEARCH_PATH = '/v3/businesses/search'
 BUSINESS_PATH = '/v3/businesses/'  # Business ID will come after slash.
 TOKEN_PATH = '/oauth2/token'
 GRANT_TYPE = 'client_credentials'
-
+#request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
+#request(API_HOST, BUSINESS_PATH+business_id+'/reviews', bearer_token)
 
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
@@ -203,6 +204,12 @@ def get_nearby_restaurants(latitude, longitude):
 
     return businesses
 
+def get_business_review(business_id):
+    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
+    reviews = request(API_HOST, BUSINESS_PATH+business_id+'/reviews', bearer_token)
+
+    return reviews['reviews'][0]['text']
+
 def convertFormat(response):
     categories = [category['alias'] for category in response['categories']]
     price = response['price'].count('$')
@@ -241,6 +248,8 @@ def main():
 
 
 if __name__ == '__main__':
+    get_business_review('yelp-san-francisco')
+    quit()
     restaurants = []
     while True:
         main()
