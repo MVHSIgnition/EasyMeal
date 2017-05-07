@@ -652,18 +652,9 @@ main {
   position: relative;
   display: inline-block;
   font-family: 'Open Sans', sans-serif;
-  font-size: 20px;
+  font-size: 80px;
   line-height: 20px;
   font-weight: 400;
-  color: #393328;
-  background:-webkit-gradient(linear, left top, left bottom, color-stop(0.05, #eb675e), color-stop(1, #e4685d));
-  background:-moz-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-  background:-webkit-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-  background:-o-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-  background:-ms-linear-gradient(top, #eb675e 5%, #e4685d 100%);
-  background:linear-gradient(to bottom, #eb675e 5%, #e4685d 100%);
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#eb675e', endColorstr='#e4685d',GradientType=0);
-  background-color:#eb675e;
 }
 .btn:before,
 .btn:after {
