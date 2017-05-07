@@ -1,5 +1,6 @@
 import sys
 import yelp_api
+import pickle
 try:
     sys.path.append('/opt/python3/lib/python3.4/site-packages')
 except:
@@ -59,9 +60,9 @@ class subscribeCallback(SubscribeCallback):
         elif message.message['cmdtype'] == "append":
             with open("restaurant_data.dat", "rb") as f:
                 rl = pickle.load(f)
-            rl.append(message.message['']
+            rl.append(yelp_api.get_business_by_id(message.message['id']))
             with open("restaurant_data.dat", "wb") as f:
-                
+                pickle.dump(rl,f)
 
 
 pubnub.add_listener(subscribeCallback())
