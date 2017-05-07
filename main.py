@@ -17,15 +17,15 @@ y_vals = np.array([a[1] for a in previous_restaurants])
 price = int(find_price.find_best_next(x_vals,y_vals))
 print('price: ',price)
 
-businesses = yelp_api.get_nearby_restaurants('37.7927639', '-122.4162511')
-
+businesses = yelp_api.get_nearby_restaurants('29.4293847','-98.5452951')
+#print(businesses)
 for business in businesses:
     #pprint.pprint(business)
     try:
         if business['price'].count('$') == price:
             print(business['name'], score.calculate_score(yelp_api.convertFormat(business)))
-    except Exception as e:
-        print(e)
+    except:
+        pass
 ##
 ##pprint.pprint(businesses)
 ##    business_id = business['id']
