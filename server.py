@@ -2,6 +2,7 @@ import pandas as pd
 import numpy as np
 from sklearn import preprocessing, cross_validation, svm, tree
 from sklearn.linear_model import LinearRegression
+from sklearn.metrics import accuracy_score
 import socket
 import pickle
 import pprint
@@ -9,15 +10,24 @@ import urllib.request
 import json
 
 # assign numbers to the categories
-target_url = 'https://www.yelp.com/developers/documentation/v2/all_category_list/categories.json'
-with urllib.request.urlopen(target_url) as url:
-    data = json.loads(url.read().decode())
+##target_url = 'https://www.yelp.com/developers/documentation/v2/all_category_list/categories.json'
+##with urllib.request.urlopen(target_url) as url:
+##    data = json.loads(url.read().decode())
+##
+##category_dict = {}
+##
+##for i, category in enumerate(data):
+##    #print(category['parents'])
+##    if category['parents'] == ['restaurants'] or category['parents'] == ['food']:
+##        category_dict[category['alias']] = i
+##
+##with open('category_ids.dat', 'wb') as f:
+##    pickle.dump(category_dict, f)
 
-category_dict = {}
+with open('category_ids.dat', 'rb') as f:
+    category_dict = pickle.load(f)
 
-for i, category in enumerate(data):
-    category_dict[category['alias']] = i
-    
+#pprint.pprint(category_dict)
 
 details = [] #categories and price of restaurant
 price = []
@@ -37,6 +47,8 @@ for restaurant in restaurants:
             details[-1].append(category_dict[restaurant['categories'][i]['alias']])
         except IndexError:
             details[-1].append(category_dict[restaurant['categories'][0]['alias']])
+        except:
+            details[-1].append(0)
 
     #category = [category_dict[category['alias']] for category in restaurant['categories']]
     details[-1].append(restaurant['price'].count('$'))
