@@ -210,6 +210,9 @@ def get_business_review(business_id):
 
     return (reviews['reviews'][0]['text'], reviews['reviews'][0]['url'])
 
+def get_business_by_id(business_id):
+    return get_business(bearer_token, business_id)
+
 def convertFormat(response):
     categories = [category['alias'] for category in response['categories']]
     price = response['price'].count('$')
