@@ -1,62 +1,49 @@
-import socket
-import sys
-import base64
-import hashlib
-from _thread import *
-host = ''
-port = 5555
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+import calc
 
-s.bind((host,port))
-s.listen(5)
+pub_key = 'pub-c-2c436bc0-666e-4975-baaf-63f16a61558d'
+sub_key = 'sub-c-0442432a-3312-11e7-bae3-02ee2ddab7fe'
+from pubnub.callbacks import SubscribeCallback
+from pubnub.enums import PNStatusCategory
+from pubnub.pnconfiguration import PNConfiguration
+from pubnub.pubnub import PubNub
+pnconfig = PNConfiguration()
+pnconfig.subscribe_key = sub_key
+pnconfig.publish_key = pub_key
+pubnub = PubNub(pnconfig)
 
-MAGIC_GUID = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11".encode("utf-8")
+def publishCallback(result, status):
+    pass
 
-handshake = '\
-HTTP/1.1 101 Web Socket Protocol Handshake\r\n\
-Upgrade: WebSocket\r\n\
-Connection: Upgrade\r\n\
-Sec-WebSocket-Accept: {}\r\n\
-Server: Test\r\n\
-Access-Control-Allow-Origin: http://localhost:5555/\r\n\
-Access-Control-Allow-Credentials: true\r\n\r\n\
-'.format(base64.b64encode(hashlib.sha1(MAGIC_GUID).digest()).decode('utf-8'))
-print(handshake)
-def threaded_client(conn):
-    header = ''
-    data = ''
-    handshaken = False
-    while handshaken == False:
-        header += conn.recv(16).decode("utf-8")
-        #rint(header)
-        if header.find('\r\n\r\n') != -1:
-            data = header.split('\r\n\r\n', 1)[0]
-            conn.send(str.encode(handshake))
-            handshaken = True
-    print("hand equals shook")
-    #print(header)
-    tmp = conn.recv(128).decode("utf-8")
-    data += tmp;
+class subscribeCallback(SubscribeCallback):
+    def status(self, pubnub, status):
+        pass
+    def presence(self, pubnub, presence):
+        pass  # handle incoming presence data
+    def message(self, pubnub, message):
+        best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
+        loc = best_restaurants[0]['location']
+        name = best_restaurants[0]['name']
+        rating = best_restaurants[0]['rating']
+        price = best_restaurants[0]['price']
+        image = best_restaurants[0]['image_url']
+        loc1 = best_restaurants[1]['location']
+        name1 = best_restaurants[1]['name']
+        rating1 = best_restaurants[1]['rating']
+        price1 = best_restaurants[1]['price']
+        image1 = best_restaurants[1]['image_url']
+        loc2 = best_restaurants[2]['location']
+        name2 = best_restaurants[2]['name']
+        rating2 = best_restaurants[2]['rating']
+        price2 = best_restaurants[2]['price']
+        image2 = best_restaurants[2]['image_url']
+        print(name,name1,name2)
+        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image}, {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1}, {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2}]).async(publishCallback)
+    
 
-    validated = []
 
-    msgs = data.split('\xff')
-    data = msgs.pop()
+pubnub.add_listener(subscribeCallback())
+pubnub.subscribe().channels('secondary_channel').execute()
 
-    for msg in msgs:
-        if msg[0] == '\x00':
-            validated.append(msg[1:])
-
-    for v in validated:
-        print(v)
-        conn.send('\x00' + v + '\xff')
-    for i in range(17):
-        conn.send( str.encode('Hello!'))
-
-    conn.close()
 
 while True:
-    conn,addr = s.accept()
-    print('{}:{} connected'.format(addr[0],addr[1]))
-
-    start_new_thread(threaded_client, (conn,))
+    pass
