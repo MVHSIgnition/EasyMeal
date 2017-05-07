@@ -1,10 +1,10 @@
 import sys
-import yelp_api
-import pickle
 try:
     sys.path.append('/opt/python3/lib/python3.4/site-packages')
 except:
     pass
+import yelp_api
+import pickle
 import calc
 
 pub_key = 'pub-c-2c436bc0-666e-4975-baaf-63f16a61558d'
