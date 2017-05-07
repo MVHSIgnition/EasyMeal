@@ -11,7 +11,7 @@ def calculate_score(restaurant):
     for r in previous_restaurants:
         for cat in r[0]:
             category_list.append(cat)
-    for category in restaurant:
+    for category in restaurant[0]:
         score += category_list.count(category)
 
     score *= restaurant[2]
