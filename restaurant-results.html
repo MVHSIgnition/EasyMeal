@@ -125,6 +125,16 @@
 		subscribe_key:'sub-c-0442432a-3312-11e7-bae3-02ee2ddab7fe',
 		ssl:true
 	});
+	
+	var city = getCity();
+	function getCity() {
+	if(window.location.search.substring(1).split('?')[0].split('=')[0] !== 'city') {
+      return null;
+    } else {
+	console.log(window.location.search.substring(1).split('?')[0].split('=')[1]);
+      return window.location.search.substring(1).split('?')[0].split('=')[1];
+    }
+	}
 
 	pubnub.subscribe({
 		channels: ['main_channel']
@@ -202,12 +212,22 @@
 	var lat = position.coords.latitude;
 	var lon = position.coords.longitude;
     latlon = lat + "," + lon;
+	if (city == null) {
+	console.log('city is null');
 	pubnub.publish({
 		channel : 'secondary_channel',
 		message : { 'cmdtype' : 'request', //request to suggest restaurants
 					'latitude' : lat,
 					'longitude': lon }
 	});
+	} else {
+	console.log('city is not null');
+	pubnub.publish({
+		channel : 'secondary_channel',
+		message : { 'cmdtype' : 'request_city', //request to suggest restaurants
+					'city' : city }
+	});
+	}
   }
 
 	function confirmRestaurant(num) {

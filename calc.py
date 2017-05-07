@@ -7,7 +7,7 @@ import numpy as np
 import pprint
 import score
 
-def process(coord_lat, coord_long):
+def process(coord_lat="", coord_long="", city=""):
     with open("restaurant_data.dat", "rb") as f:
         previous_restaurants = pickle.load(f)
         #print(previous_restaurants)
@@ -18,7 +18,10 @@ def process(coord_lat, coord_long):
     price = int(find_price.find_best_next(x_vals,y_vals))
     print('price: ',price)
 
-    businesses = yelp_api.get_nearby_restaurants(coord_lat,coord_long)
+    if city == "":
+        businesses = yelp_api.get_nearby_restaurants(coord_lat,coord_long)
+    else:
+        businesses = yelp_api.get_nearby_restaurants(city)
     #print(businesses)
     scorelist = []
     businesslist = []
