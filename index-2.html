@@ -58,8 +58,21 @@
       </div>
 
           <h2><em><a href="restaurant-results.html" class="btn">Find Me Restaurants</a></em></h2>
-
+    <br>
+    <br>
+    <main1>
+    		<div class = "boxed">
+    		    <p align = "center">Or, plan ahead by entering the city you will be traveling to:</p>
+            <div class= "boxed1">
+    		        <input id="city_box" type="textbox" placeholder="City, State">
+    		          <button><a onclick="searchCity()" name="submit" id="submit" type="submit">Sign in</button>
+            </div>
+        </div>
+      </main1>
 <script>
+function searchCity() {
+	window.location.href = "restaurant-results.html?city=" + $("#city_box").val().replace(' ', '+');
+}
 </script>
 </body>
 </html>
