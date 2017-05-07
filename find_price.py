@@ -2,6 +2,8 @@ import numpy as np
 
 #y = mx + b
 #contains functions for predicted price of next restaurant given trends
+#
+#mvhs iot club
 
 def find_m_and_b(xs,ys):
     #finds line of best fit for given set of points
