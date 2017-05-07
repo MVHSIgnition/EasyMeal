@@ -38,7 +38,7 @@
 
               <div class="brand">
                   <h1 class="brand_name">
-                      <a href="index.html">TableCloth</a>
+                      <a href="index.html">EZMeal</a>
                   </h1>
               </div>
 
@@ -57,37 +57,10 @@
               </nav>
           </div>
       </div>
-      <div class = "btnbox">
-             <h2><em><a href="restaurant-results.html" onclick="getLocation()", "save()" class="btn">Find me Restaurants</a></em></h2>
-             <br>
-             <br>
-             <br>
-             <br>
-             <br>
-          </form>
-          <p id="demo"></p>
+
+          <h2><em><button onclick="document.location.href = 'restaurant-results.html';" class="btn" style="width:80%; height:50%">Find Me Restaurants</button></em></h2>
+
 <script>
-
-    var x = document.getElementById("demo");
-
-    function getLocation() {
-      if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition);
-          var latitude = position.coords.latitude;
-          var longitude = position.coords.longitude;
-      } else {
-          x.innerHTML = "Geolocation is not supported by this browser."
-
-
-      }
-    }
-    function setCookies(latitude, longitude){
-      document.cookie = latitude + "," + longitude;
-    }
-
-
-
-
 </script>
 </body>
 </html>

@@ -148,6 +148,7 @@ table {
 .boxed {
   border: 1px;
 }
+/*
 .btnbox {
   width: 875px;
   border: 8px solid black;
@@ -155,6 +156,7 @@ table {
   margin: 25px;
   background-color: white;
 }
+*/
 .container:after,
 .container-fluid:after,
 .row:after {
