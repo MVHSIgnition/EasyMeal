@@ -989,6 +989,17 @@ footer .tm {
 .box-3 h2 + * {
   margin-top: 50px;
 }
+.box-4 h2 {
+  text-align: right;
+  font-size: 48px;
+  line-height: 29px;
+}
+* + .box-4 {
+  margin-top: 50px;
+}
+.box-4 h2 + * {
+  margin-top: 50px;
+}
 /*==================  GOOGLE MAP  ======================*/
 * + .map {
   margin-top: 72px;
