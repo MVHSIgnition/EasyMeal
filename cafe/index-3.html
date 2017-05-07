@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <title>Menu</title>
@@ -50,7 +50,7 @@
                           <a href="index-1.html">How it Works</a>
                       </li>
                       <li>
-                          <a href="index-4.html">Contact us</a>
+                          <a href="index-4.html">Login</a>
                       </li>
                   </ul>
               </nav>
@@ -80,13 +80,19 @@
                             <div class="contact-form-loader"></div>
                             <fieldset>
                                 <label class="name">
-                                    Your Name:
-                                    <input type="text" name="name" placeholder="" value=""
+                                    First Name:
+                                    <input type="text" name="First_Name" placeholder="" value=""
                                            data-constraints="@Required @JustLetters"/>
                                     <span class="empty-message">*This field is required.</span>
                                     <span class="error-message">*This is not a valid name.</span>
                                 </label>
-
+                                <label class="name">
+                                    Last Name:
+                                    <input type="text" name="Last_Name" placeholder="" value=""
+                                           data-constraints="@Required @JustLetters"/>
+                                    <span class="empty-message">*This field is required.</span>
+                                    <span class="error-message">*This is not a valid name.</span>
+                                </label>
                                 <label class="email">
                                     Your E-mail:
                                     <input type="text" name="email" placeholder="" value=""
@@ -95,25 +101,25 @@
                                     <span class="error-message">*This is not a valid email.</span>
                                 </label>
 
-                                <label class="Subject">
-                                    Subject:
-                                    <input type="text" name="phone" placeholder="" value=""
-                                           data-constraints="@Required"/>
+                                <label class="Username">
+                                    Username:
+                                    <input type="text" name="Username" placeholder="" value=""
+                                           data-constraints="@Required "/>
                                     <span class="empty-message">*This field is required.</span>
-                                    <span class="error-message">*This is not a valid phone.</span>
+                                    <span class="error-message">*This is not a valid username.</span>
                                 </label>
 
-                                <label class="message">
-                                    Message:
-                                    <textarea name="message" placeholder=""
-                                              data-constraints='@Required @Length(min=20,max=999999)'></textarea>
+                                <label class="Password">
+                                    Password:
+                                    <input type="text" name="Password" placeholder=""
+                                              data-constraints='@Required @Length(min=8,max=)'/>
                                     <span class="empty-message">*This field is required.</span>
-                                    <span class="error-message">*The message is too short.</span>
+                                    <span class="error-message">*Your password must be more than 8 charachters.</span>
                                 </label>
 
                                 <div class="btn-wr">
-                                    <a class="" href="#" data-type="reset">Clear</a>
-                                    <a class="" href="#" data-type="submit">Send</a>
+                                    <a class="" href="#" data-type="reset">Create Account</a>
+                                    <a class="indents-0" href="#" data-type="submit">Already have an account?</br>Sign In</a>
                                 </div>
                             </fieldset>
                             <div class="modal fade response-message">

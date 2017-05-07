@@ -152,6 +152,14 @@ a[href^="tel:"] {
 .center {
   text-align: center;
 }
+.indents-0 {
+  padding: 0 -50px;
+}
+@media (max-width: 1199px) {
+  .indents-0 {
+    padding: 0;
+  }
+}
 .indents-1 {
   padding: 0 30px;
 }
