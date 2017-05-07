@@ -31,18 +31,23 @@ class subscribeCallback(SubscribeCallback):
         rating = best_restaurants[0]['rating']
         price = best_restaurants[0]['price']
         image = best_restaurants[0]['image_url']
+        url = best_restaurants[0]['url']
         loc1 = best_restaurants[1]['location']
         name1 = best_restaurants[1]['name']
         rating1 = best_restaurants[1]['rating']
         price1 = best_restaurants[1]['price']
         image1 = best_restaurants[1]['image_url']
+        url1 = best_restaurants[1]['url']
         loc2 = best_restaurants[2]['location']
         name2 = best_restaurants[2]['name']
         rating2 = best_restaurants[2]['rating']
         price2 = best_restaurants[2]['price']
         image2 = best_restaurants[2]['image_url']
+        url2 = best_restaurants[2]['url']
         print(name,name1,name2)
-        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image}, {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1}, {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2}]).async(publishCallback)
+        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image,"url":url},
+                                                          {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1}, 
+                                                          {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2}]).async(publishCallback)
     
 
 
