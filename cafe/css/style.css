@@ -980,8 +980,10 @@ footer .tm {
 }
 .box-3 h2 {
   text-align: left;
+  margin-left: 10%;
   font-size: 48px;
   line-height: 29px;
+  margin-right: 65%;
 }
 * + .box-3 {
   margin-top: 50px;
