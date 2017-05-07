@@ -34,8 +34,27 @@
     <!--========================================================
                               HEADER
     =========================================================-->
+    <div class="modal-bg" style="display:none;">
+    <div id="modal">
+      <span>Sign In<a href="#close" id="close">&#215;</a></span>
+      <form>
+        <input id="username" name="username" type="textbox" placeholder="Username">
+        <input id="password" name="password" type="password" placeholder="Password">
+        <a id="forgot-link" href="#">Forgot password?</a>
+        <a href="index-2.html" name="submit" id="submit" type="submit">Sign in</button>
+      </form>
+      <form>
+        <input id="_email" name="email" type="textbox" placeholder="E-mail" required>
+        <input id="_username" name="_username" type="textbox" placeholder="Username" required>
+        <input id="_password" name="_password" type="password" placeholder="Password" required>
+        <input id="_conf_password" name="_conf_password" type="password" placeholder="Confirm Password" required>
+        <button name="sign_up" id="sign_up" type="submit">Sign up</button>
+      </form>
+    </div>
+    </div>
+
     <header>
-      <div id="stuck_container" class="stuck_container">
+      <div id="container" class="container">
           <div class="container">
 
               <div class="brand">
@@ -49,9 +68,9 @@
                     <li>
                         <a href="index.html">Home</a>
                     </li>
-                      <li>
-                          <a href="index-3.html">Login</a>
-                      </li>
+                    <li>
+                        <a style="cursor: pointer;" onclick="showLogin()">Login</a>
+                    </li>
 
                   </ul>
               </nav>
@@ -80,20 +99,40 @@
                     <em><ahref="./">EasyMeal</em> </a>
                 </h1>
 
-				<h2><em><a href="index-3.html" class="btn-main">Find Me Restaurants</a></em></h2>
+				<h2><em><a style="cursor: pointer;" onclick="showLogin()" class="btn-main">Find Me Restaurants</a></em></h2>
 
             </div>
         </div>
         <main>
     <section class="well">
         <div class="container">
-            <h2><em>Login</em></br>or Signup to Start</h2>
+            <h2><a style="cursor: pointer;" onclick="showLogin()"><em>Login</em></a></br>or Signup to Start</h2>
             <br>
             <br>
             <br>
             <br>
             <br>
-
 <script src="js/script.js"></script>
+<script>
+$('.modal-bg').fadeOut();
+$('#modal').fadeOut();
+
+function showLogin() {
+	$('.modal-bg').css('display', 'block');
+	$('.modal-bg').fadeIn();
+	$('#modal').fadeIn();
+}
+
+$('.button').click(function(){
+		  $('#modal').css('display','block');
+		  $('.modal-bg').fadeIn();
+	});
+
+		$('#close').click(function(){
+			  $('.modal-bg').fadeOut();
+			  $('#modal').fadeOut();
+		  return false;
+		});
+</script>
 </body>
 </html>
