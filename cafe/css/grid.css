@@ -288,6 +288,10 @@ table {
 .container .grid_1 {
   width: 70px;
 }
+
+.container .grid_35 {
+  width: 35%;
+}
 .container .preffix_12 {
   margin-left: 1230px;
 }
