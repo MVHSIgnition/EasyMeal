@@ -58,7 +58,7 @@
           </div>
       </div>
       <div class = "btnbox">
-             <h2><em><a href="restaurant-results.html" onclick="getLocation()" class="btn">Find me Restaurants</a></em></h2>
+             <h2><em><a href="restaurant-results.html" onclick="getLocation()", "save()" class="btn">Find me Restaurants</a></em></h2>
              <br>
              <br>
              <br>
@@ -81,8 +81,12 @@
     function showPosition(position) {
       x.innerHTML = "Latitude: " + position.coords.latitude +
       "<br>Longitude: " + position.coords.longitude;
-      console.log(position.coords.latitude)
     }
+    function save() {
+      sessionStorage.setItem(position.coords.latitude, position.coords.longitude)
+      console.log(sessionStorage)
+    }
+
 
 </script>
 </body>
