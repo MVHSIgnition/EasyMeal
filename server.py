@@ -1,73 +1,62 @@
-import pandas as pd
-import numpy as np
-from sklearn import preprocessing, cross_validation, svm, tree
-from sklearn.linear_model import LinearRegression
-from sklearn.metrics import accuracy_score
 import socket
-import pickle
-import pprint
-import urllib.request
-import json
+import sys
+import base64
+import hashlib
+from _thread import *
+host = ''
+port = 5555
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
-# assign numbers to the categories
-##target_url = 'https://www.yelp.com/developers/documentation/v2/all_category_list/categories.json'
-##with urllib.request.urlopen(target_url) as url:
-##    data = json.loads(url.read().decode())
-##
-##category_dict = {}
-##
-##for i, category in enumerate(data):
-##    #print(category['parents'])
-##    if category['parents'] == ['restaurants'] or category['parents'] == ['food']:
-##        category_dict[category['alias']] = i
-##
-##with open('category_ids.dat', 'wb') as f:
-##    pickle.dump(category_dict, f)
+s.bind((host,port))
+s.listen(5)
 
-with open('category_ids.dat', 'rb') as f:
-    category_dict = pickle.load(f)
+MAGIC_GUID = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11".encode("utf-8")
 
-#pprint.pprint(category_dict)
+handshake = '\
+HTTP/1.1 101 Web Socket Protocol Handshake\r\n\
+Upgrade: WebSocket\r\n\
+Connection: Upgrade\r\n\
+Sec-WebSocket-Accept: {}\r\n\
+Server: Test\r\n\
+Access-Control-Allow-Origin: http://localhost:5555/\r\n\
+Access-Control-Allow-Credentials: true\r\n\r\n\
+'.format(base64.b64encode(hashlib.sha1(MAGIC_GUID).digest()).decode('utf-8'))
+print(handshake)
+def threaded_client(conn):
+    header = ''
+    data = ''
+    handshaken = False
+    while handshaken == False:
+        header += conn.recv(16).decode("utf-8")
+        #rint(header)
+        if header.find('\r\n\r\n') != -1:
+            data = header.split('\r\n\r\n', 1)[0]
+            conn.send(str.encode(handshake))
+            handshaken = True
+    print("hand equals shook")
+    #print(header)
+    tmp = conn.recv(128).decode("utf-8")
+    data += tmp;
 
-details = [] #categories and price of restaurant
-price = []
-rating = []
+    validated = []
 
-with open("user_data.dat", "rb") as f:
-    restaurants = pickle.load(f)
+    msgs = data.split('\xff')
+    data = msgs.pop()
 
-#pprint.pprint(restaurants)
+    for msg in msgs:
+        if msg[0] == '\x00':
+            validated.append(msg[1:])
 
-print("\n\n\n\n\n\n")
+    for v in validated:
+        print(v)
+        conn.send('\x00' + v + '\xff')
+    for i in range(17):
+        conn.send( str.encode('Hello!'))
 
-for restaurant in restaurants:
-    details.append([])
-    for i in range(3):
-        try:
-            details[-1].append(category_dict[restaurant['categories'][i]['alias']])
-        except IndexError:
-            details[-1].append(category_dict[restaurant['categories'][0]['alias']])
-        except:
-            details[-1].append(0)
+    conn.close()
 
-    #category = [category_dict[category['alias']] for category in restaurant['categories']]
-    details[-1].append(restaurant['price'].count('$'))
-    #print([ord(char) - 96 for char in categories[0]])
-    #print(categories[0])
-    #price.append(restaurant['price'].count('$'))
-    rating.append(int(restaurant['rating'] * 10))
-print(details)
-print(rating)
+while True:
+    conn,addr = s.accept()
+    print('{}:{} connected'.format(addr[0],addr[1]))
 
-#rest = [categories,price]
-#print(rest)
-
-clf = tree.DecisionTreeClassifier()
-clf = clf.fit(details, rating)
-
-def get_new_rating(mrate):
-    rating_pred = clf.predict(mrate)
-    print(rating_pred)
-
-
-get_new_rating([269, 828, 1152,3])
+    start_new_thread(threaded_client, (conn,))
