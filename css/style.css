@@ -312,6 +312,7 @@ a[href^="tel:"] {
   background: #ffffff;
   border-left: 1px solid #e6e6e6;
   z-index: 998;
+  padding: 100;
 }
 .toggle-menu-container .nav_title {
   padding: 20px 0;
@@ -649,7 +650,7 @@ main {
 }
 /*==================      Well     ======================*/
 .well {
-  padding: 114px 0 0 0;
+  padding: 200px 0 0 0;
 }
 .well__offset-1 {
   padding: 135px 0 128px 0;
