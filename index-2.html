@@ -71,8 +71,7 @@
       </main1>
 <script>
 function searchCity() {
-	console.log('going to '+ "restaurant-results.html?city=" + city_box.val().replace(' ', '+'));
-	window.location.href = "restaurant-results.html?city=" + city_box.val().replace(' ', '+');
+	window.location.href = "restaurant-results.html?city=" + $("#city_box").val().replace(' ', '+');
 }
 </script>
 </body>
