@@ -13,14 +13,14 @@
   position: relative;
   display: block;
   letter-spacing: normal;
-  margin: 0 0 8px 50px;
+  margin: 0 65% 8px 10%;
   width: 100%;
   font: 400 18px/20px 'Open Sans', sans-serif;
 }
 #contact-form label.message {
   max-width: 100%;
   width: 100%;
-  margin: 0 0 25px;
+  margin: 0 0 25px;--->
 }
 #contact-form fieldset {
   border: none;
