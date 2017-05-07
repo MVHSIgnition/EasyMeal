@@ -13,7 +13,7 @@
   position: relative;
   display: block;
   letter-spacing: normal;
-  margin: 0 0 8px;
+  margin: 0 0 8px 50px;
   width: 100%;
   font: 400 18px/20px 'Open Sans', sans-serif;
 }
@@ -94,7 +94,7 @@
 #contact-form .btn-wr a + a {
   margin-left: 20px;
 }
-/* Contact Form Textarea 
+/* Contact Form Textarea
 ========================================================*/
 #contact-form textarea {
   display: block;
