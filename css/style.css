@@ -648,6 +648,13 @@ main {
   display: block;
   background: #ffffff;
 }
+main1 {
+  display:block;
+  background: #ffffff;
+  padding:inherit;
+  margin:auto;
+  width: 70%;
+}
 /*==================      Well     ======================*/
 .well {
   padding: 200px 0 0 0;
@@ -695,12 +702,12 @@ main {
 }
 
 @-webkit-keyframes animatebottom {
-  from { bottom:-100px; opacity:0 } 
+  from { bottom:-100px; opacity:0 }
   to { bottom:0px; opacity:1 }
 }
 
-@keyframes animatebottom { 
-  from{ bottom:-100px; opacity:0 } 
+@keyframes animatebottom {
+  from{ bottom:-100px; opacity:0 }
   to{ bottom:0; opacity:1 }
 }
 /*==================    Buttons    ======================*/

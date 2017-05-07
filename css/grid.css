@@ -148,6 +148,11 @@ table {
   border: 1px;
   font-size: 18px;
 }
+.boxed1 {
+  border: 1px;
+  font-size: 18px;
+  margin: auto;
+}
 /*
 .btnbox {
   width: 875px;

@@ -58,10 +58,17 @@
       </div>
 
           <h2><em><a href="restaurant-results.html" class="btn">Find Me Restaurants</a></em></h2>
-			
-		<p>Or, plan ahead by entering the city you will be traveling to:</p>
-		<input id="city_box" type="textbox" placeholder="City, State">
-		<a onclick="searchCity()" name="submit" id="submit" type="submit">Sign in</button>
+    <br>
+    <br>
+    <main1>
+    		<div class = "boxed">
+    		    <p align = "center">Or, plan ahead by entering the city you will be traveling to:</p>
+            <div class= "boxed1">
+    		        <input id="city_box" type="textbox" placeholder="City, State">
+    		          <button><a onclick="searchCity()" name="submit" id="submit" type="submit">Sign in</button>
+            </div>
+        </div>
+      </main1>
 <script>
 function searchCity() {
 	console.log('going to '+ "restaurant-results.html?city=" + city_box.val().replace(' ', '+'));
