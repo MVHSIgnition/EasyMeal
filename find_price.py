@@ -42,7 +42,7 @@ def find_best_next(xs,ys):
     #returns next predicted value
     best_acc = 0
     best_line = (0,0)
-    for current_start in range(xs.size-3, 0, -1):
+    for current_start in range(xs.size-3, xs.size-(round(.5*xs.size)+2), -1):
         m,b = find_m_and_b(xs[current_start:-1],ys[current_start:-1])
         acc = find_accuracy(xs[current_start:-1],ys[current_start:-1],m,b)
         if acc >= best_acc:

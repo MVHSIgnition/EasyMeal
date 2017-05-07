@@ -25,7 +25,7 @@ def process(coord_lat, coord_long):
     for business in businesses:
         #pprint.pprint(business)
         try:
-            if business['price'].count('$') == price:
+            if business['price'].count('$') <= price + 1 and business['price'].count('$') >= price - 1:
                 print(business['name'], score.calculate_score(yelp_api.convertFormat(business)))
                 scorelist.append(score.calculate_score(yelp_api.convertFormat(business)))
                 businesslist.append(business)

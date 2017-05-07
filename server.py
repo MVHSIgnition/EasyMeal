@@ -58,9 +58,10 @@ class subscribeCallback(SubscribeCallback):
                                                               {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1, "review":review1, "id":id2}, 
                                                               {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2, "review":review2, "id":id3}]).async(publishCallback)
         elif message.message['cmdtype'] == "append":
+            print("new restaurant received")
             with open("restaurant_data.dat", "rb") as f:
                 rl = pickle.load(f)
-            rl.append(yelp_api.get_business_by_id(message.message['id']))
+            rl.append(yelp_api.convertFormat(yelp_api.get_business_by_id(message.message['id'])))
             with open("restaurant_data.dat", "wb") as f:
                 pickle.dump(rl,f)
 
