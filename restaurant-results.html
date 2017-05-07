@@ -145,9 +145,9 @@
 			$("#review1").html('"'+message[1]['review'][0]+'"');
 			$("#review2").html('"'+message[2]['review'][0]+'"');
 			
-			$("#review").onclick(window.open(message[0]['review'][1]))
-			$("#review1").onclick(window.open(message[1]['review'][1]))
-			$("#review2").onclick(window.open(message[2]['review'][1]))
+			$("#review").click(function() {window.open(message[0]['review'][1])});
+			$("#review1").click(function() {window.open(message[1]['review'][1])});
+			$("#review2").click(function() {window.open(message[2]['review'][1])});
 			
 			$("#name").html(message[0]['name']);
 			$('#rating').html(message[0]['rating']);
