@@ -1,4 +1,5 @@
 import sys
+import yelp_api
 try:
     sys.path.append('/opt/python3/lib/python3.4/site-packages')
 except:
@@ -26,6 +27,10 @@ class subscribeCallback(SubscribeCallback):
         pass  # handle incoming presence data
     def message(self, pubnub, message):
         best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
+        review = yelp_api.get_business_review(best_restaurant[0]['id'])
+        review1 = yelp_api.get_business_review(best_restaurant[1]['id'])
+        review2 = yelp_api.get_business_review(best_restaurant[2]['id'])
+        
         loc = best_restaurants[0]['location']
         name = best_restaurants[0]['name']
         rating = best_restaurants[0]['rating']
@@ -45,9 +50,9 @@ class subscribeCallback(SubscribeCallback):
         image2 = best_restaurants[2]['image_url']
         url2 = best_restaurants[2]['url']
         print(name,name1,name2)
-        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image,"url":url},
-                                                          {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1}, 
-                                                          {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2}]).async(publishCallback)
+        pubnub.publish().channel('main_channel').message([{"name":name,"rating":rating,"price":price,"loc":loc,"image":image,"url":url, "review":review},
+                                                          {"name":name1,"rating":rating1,"price":price1,"loc":loc1,"image":image1,"url":url1, "review":review1}, 
+                                                          {"name":name2,"rating":rating2,"price":price2,"loc":loc2,"image":image2,"url":url2, "review":review2}]).async(publishCallback)
     
 
 
