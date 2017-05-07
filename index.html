@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Home</title>
+    <meta charset="utf-8">
+    <meta name="format-detection" content="telephone=no"/>
+    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/grid.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/camera.css">
+	<link rel="stylesheet" href="css/yesteryear.css">
+	<link rel="stylesheet" href="css/font-awesome-min.css">
+    <link rel="stylesheet" href="css/jquery.fancybox.css">
+
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery-migrate-1.2.1.js"></script>
+
+    <!--[if lt IE 9]>
+    <html class="lt-ie9">
+    <div style=' clear: both; text-align:center; position: relative;'>
+        <a href="http://windows.microsoft.com/en-US/internet-explorer/..">
+            <img src="images/ie8-panel/warning_bar_0000_us.jpg" border="0" height="42" width="820"
+                 alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today."/>
+        </a>
+    </div>
+    <script src="js/html5shiv.js"></script>
+    <![endif]-->
+
+    <script src='js/device.min.js'></script>
+</head>
+
+<body>
+<div class="page">
+    <!--========================================================
+                              HEADER
+    =========================================================-->
+    <div class="modal-bg" style="display:none;">
+    <div id="modal">
+      <span>Sign In<a href="#close" id="close">&#215;</a></span>
+      <form>
+        <input id="username" name="username" type="textbox" placeholder="Username">
+        <input id="password" name="password" type="password" placeholder="Password">
+        <a id="forgot-link" href="#">Forgot password?</a>
+        <a href="index-2.html" name="submit" id="submit" type="submit">Sign in</button>
+      </form>
+      <form>
+        <input id="_email" name="email" type="textbox" placeholder="E-mail" required>
+        <input id="_username" name="_username" type="textbox" placeholder="Username" required>
+        <input id="_password" name="_password" type="password" placeholder="Password" required>
+        <input id="_conf_password" name="_conf_password" type="password" placeholder="Confirm Password" required>
+        <button name="sign_up" id="sign_up" type="submit">Sign up</button>
+      </form>
+    </div>
+    </div>
+
+    <header>
+      <div id="container" class="container">
+          <div class="container">
+
+              <div class="brand">
+                  <h1 class="brand_name">
+                      <a href="index.html">EasyMeal</a>
+                  </h1>
+              </div>
+
+              <nav class="nav">
+                  <ul class="sf-menu">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+                    <li>
+                        <a style="cursor: pointer;" onclick="showLogin()">Login</a>
+                    </li>
+
+                  </ul>
+              </nav>
+          </div>
+      </div>
+
+
+        <div class="camera_container">
+            <div id="camera" class="camera_wrap">
+                <div data-thumb="images/steak-thumb.jpg" data-src="images/steak.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+                <div data-thumb="images/sushi-thumb.jpg" data-src="images/sushi.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+                <div data-thumb="images/Noodles-thumb.jpg" data-src="images/Noodles.jpg">
+                    <div class="camera_caption fadeIn">
+                    </div>
+                </div>
+            </div>
+
+            <div class="brand wow fadeIn">
+                <h1 class="brand_name">
+                    <em><ahref="./">EasyMeal</em> </a>
+                </h1>
+
+				<h2><em><a style="cursor: pointer;" onclick="showLogin()" class="btn-main">Find Me Restaurants</a></em></h2>
+
+            </div>
+        </div>
+        <main>
+    <section class="well">
+        <div class="container">
+            <h2><a style="cursor: pointer;" onclick="showLogin()"><em>Login</em></a></br>or Signup to Start</h2>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+<script src="js/script.js"></script>
+<script>
+$('.modal-bg').fadeOut();
+$('#modal').fadeOut();
+
+function showLogin() {
+	$('.modal-bg').css('display', 'block');
+	$('.modal-bg').fadeIn();
+	$('#modal').fadeIn();
+}
+
+$('.button').click(function(){
+		  $('#modal').css('display','block');
+		  $('.modal-bg').fadeIn();
+	});
+
+		$('#close').click(function(){
+			  $('.modal-bg').fadeOut();
+			  $('#modal').fadeOut();
+		  return false;
+		});
+</script>
+</body>
+</html>
