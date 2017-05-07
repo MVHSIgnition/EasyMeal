@@ -62,91 +62,25 @@
                               CONTENT
     =========================================================-->
     <main>
-        <section class="well well__offset-3">
-<!---            <div class="container">
+<!---      <span class="button">Sign In</span>--->
+      <div class="modal-bg">
+      <div id="modal">
+      	<span>Sign In<a href="file:///Users/Ajay/Documents/yelperhelper/cafe/index.html" id="close">&#215;</a></span>
+      	<form>
+      		<input id="username" name="username" type="textbox" placeholder="Username" required>
+      		<input id="password" name="password" type="password" placeholder="Password" required>
+          <button name="submit" id="submit" type="submit">Sign in</button>
+      		<a id="forgot-link" href="#">Forgot password?</a>
+          <h6>Sign Up</h6>
+          <input id="full name" name="full name" type="textbox" placeholder="Full Name" required>
+          <input id="email" name="email" type="email" placeholder="Email" required>
+          <input id="username" name="username" type="textbox" placeholder="Username" required>
+          <input id="password" name="password" type="password" placeholder="Password" required>
 
-                <div class="map">
-                  <div id="google-map" class="map_model"></div>
-                  <ul class="map_locations">
-                    <li data-x="-73.9874068" data-y="40.643180">
-                      <p> 9870 St Vincent Place, Glasgow, DC 45 Fr 45. <span>800 2345-6789</span></p>
-                    </li>
-                  </ul>
-                </div>--->
-                <div class="grid_5">
+      	</form>
+      </div>
+      </div>
 
-                      <h2><em>Login</em></h2>
-
-                        <form id="contact-form" class='contact-form'>
-                            <div class="contact-form-loader"></div>
-
-                                <label class="Username">
-                                    Username:
-                                    <input type="text" class="grid_5" name="Username" placeholder="" value=""
-                                           data-constraints="@Required "/>
-                                    <span class="empty-message">*This field is required.</span>
-                                    <span class="error-message">*This is not a valid username.</span>
-                                </label>
-
-                                <label class="Password">
-                                    Password:
-                                    <input type="text" name="Password" placeholder=""
-                                              data-constraints='@Required @Length(min=8,max=)'/>
-                                    <span class="empty-message">*This field is required.</span>
-                                    <span class="error-message">*Your password must be more than 8 charachters.</span>
-                                </label>
-
-                                <div class="btn-wr">
-                                    <a class="" href="file:///Users/Ajay/Documents/yelperhelper/cafe/index-5.html#" data-type="reset">Log In</a>
-                                </div>
-                <div class="grid_5">
-                    <h2><em>Create Account:</em></h2>
-                    <form id="contact-form2" class='contact-form'>
-                        <div class="contact-form-loader"></div>
-
-                          <label class="name">
-                              First Name:
-                              <input type="text" name="First_Name" placeholder="" value=""
-                                     data-constraints="@Required "/>
-                              <span class="empty-message">*This field is required.</span>
-                              <span class="error-message">*This is not a valid username.</span>
-                          </label>
-                          <label class="name">
-                              Last Name:
-                              <input type="text" name="Last_Name" placeholder="" value=""
-                                     data-constraints="@Required "/>
-                              <span class="empty-message">*This field is required.</span>
-                              <span class="error-message">*This is not a valid username.</span>
-                          </label>
-                          <label class="email">
-                              Email:
-                              <input type="text" name="Email" placeholder="" value=""
-                                     data-constraints="@Required "/>
-                              <span class="empty-message">*This field is required.</span>
-                              <span class="error-message">*This is not a valid username.</span>
-                          </label>
-                            <label class="Username">
-                                Username:
-                                <input type="text" name="Username" placeholder="" value=""
-                                       data-constraints="@Required "/>
-                                <span class="empty-message">*This field is required.</span>
-                                <span class="error-message">*This is not a valid username.</span>
-                            </label>
-
-                            <label class="Password">
-                                Password:
-                                <input type="text" name="Password" placeholder=""
-                                          data-constraints='@Required @Length(min=8,max=)'/>
-                                <span class="empty-message">*This field is required.</span>
-                                <span class="error-message">*Your password must be more than 8 charachters.</span>
-                            </label>
-
-                            <div class="btn-wr">
-                                <a class="" href="#" data-type="reset">Create Account</a>
-                            </div>
-
-            </div>
-        </section>
     </main>
 
     <!--========================================================
