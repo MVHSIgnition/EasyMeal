@@ -990,17 +990,17 @@ footer .tm {
   margin-top: 50px;
 }
 .box-4 h2 {
-  text-align: right;
+  text-align: center;
   font-size: 48px;
   line-height: 29px;
 }
 * + .box-4 {
   margin-top: 50px;
-  margin-right: 50px;
+  margin-left: 50px;
 }
 .box-4 h2 + * {
   margin-top: 50px;
-  margin-right: 50px
+  margin-left: 50px
 }
 /*==================  GOOGLE MAP  ======================*/
 * + .map {
