@@ -152,6 +152,8 @@ table {
   border: 1px;
   font-size: 18px;
   margin: auto;
+  padding-left: 200px;
+  padding-bottom: 10px;
 }
 /*
 .btnbox {
