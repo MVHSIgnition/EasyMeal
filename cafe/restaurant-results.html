@@ -62,17 +62,55 @@
             <h2><em>Here are our Suggestions</em></h2>
               <br>
             <div class="boxed">
-                <div class= "grid_2"><p align="left";>#1: Placeholder </div><div class= "grid_3"> Star Rating </div> </p> <div class="grid_5"><p> Review </p> <iframe width="550" height="400" frameborder="0" style="border:0" id = "map" allowfullscreen></iframe> </p></div>
+                <div class= "grid_2"><p align="left">#1: <b id="name1">Placeholder</b> </div><div class="grid_3"> Rating: <b id="rating1"></b>/5</div> </p> <div class="grid_5"><p> Review </p> <iframe width="550" height="400" frameborder="0" style="border:0" id = "map" allowfullscreen></iframe> </p></div>
                 <br>
-                <div class= "grid_2"><p align="left">#2: Placeholder </div><div class="grid_3"> Star Rating </div></p> <div class="grid_5"><p> Review </p><iframe width="550" height="400" frameborder="0" style="border:0" id = "map1" allowfullscreen></iframe> </p></div>
+                <div class= "grid_2"><p align="left">#2: <b id="name2">Placeholder</b> </div><div class="grid_3"> Rating <b id="rating2"></b>/5</div></p> <div class="grid_5"><p> Review </p><iframe width="550" height="400" frameborder="0" style="border:0" id = "map1" allowfullscreen></iframe> </p></div>
                 <br>
-                <div class= "grid_2"><p align="left">#3: Placeholder </div><div class="grid_3"> Star Rating </div></p> <div class="grid_5"><p> Review </p><iframe width="550" height="400" frameborder="0" style="border:0" id = "map2" allowfullscreen></iframe> </p></div>
+                <div class= "grid_2"><p align="left">#3: <b id="name3">Placeholder</b> </div><div class="grid_3"> Rating <b id="rating3"></b>/5</div></p> <div class="grid_5"><p> Review </p><iframe width="550" height="400" frameborder="0" style="border:0" id = "map2" allowfullscreen></iframe> </p></div>
                 <br>
               </font>
               </div>
           </div>
 
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.4.3.js"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
+	var latlon;
+	var pubnub = new PubNub({
+		publish_key:'pub-c-2c436bc0-666e-4975-baaf-63f16a61558d',
+		subscribe_key:'sub-c-0442432a-3312-11e7-bae3-02ee2ddab7fe',
+		ssl:true
+	});
+	
+	pubnub.subscribe({
+		channels: ['main_channel']
+	});
+	
+	
+	pubnub.addListener({
+	
+		message: function(payload) {
+			var message = payload.message;
+			var str = message[0]['loc']['display_address'][0] + "+" + message[0]['loc']['display_address'][1];
+			var str1 = message[1]['loc']['display_address'][0] + "+" + message[1]['loc']['display_address'][1];
+			var str2 = message[2]['loc']['display_address'][0] + "+" + message[2]['loc']['display_address'][1];
+			var dest_addr = str.replace(' ', '+');
+			var dest_addr1 = str1.replace(' ', '+');
+			var dest_addr2 = str2.replace(' ', '+');
+			
+			document.getElementById("map").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=" + dest_addr + "&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+			document.getElementById("map1").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=" + dest_addr1 + "&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+			document.getElementById("map2").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=" + dest_addr2 + "&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+			
+			$("#name1").html(message[0]['name']);
+			$('#rating1').html(message[0]['rating']);
+			$("#name2").html(message[1]['name']);
+			$('#rating2').html(message[1]['rating']);
+			$("#name3").html(message[2]['name']);
+			$('#rating3').html(message[2]['rating']);
+		}
+	});
+	
   function getLocation() {
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(showPosition);
@@ -80,11 +118,15 @@
         x.innerHTML = "Geolocation is not supported by this browser."
       }
     }
+	
   function showPosition(position){
-    var latlon = position.coords.latitude + "," + position.coords.longitude;
-    document.getElementById("map").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
-    document.getElementById("map1").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
-    document.getElementById("map2").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+	var lat = position.coords.latitude;
+	var lon = position.coords.longitude;
+    latlon = lat + "," + lon;
+	pubnub.publish({
+		channel : 'secondary_channel', 
+		message : {'latitude': lat, 'longitude': lon}
+	});
   }
 
     $(document).ready(getLocation());
