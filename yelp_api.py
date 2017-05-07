@@ -211,6 +211,7 @@ def get_business_review(business_id):
     return (reviews['reviews'][0]['text'], reviews['reviews'][0]['url'])
 
 def get_business_by_id(business_id):
+    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
     return get_business(bearer_token, business_id)
 
 def convertFormat(response):

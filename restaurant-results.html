@@ -70,7 +70,8 @@
 				Rating: <b id="rating"></b>
 				
                 <br>
-				<i><p align="center" id="review"> </p></i>
+				<i><p align="center" id="review"> </p></i> 
+				<a onclick="confirmRestaurant(0)" id="confirm">Go Here!</a>
 				
 				<hr>
 				<div>
@@ -80,6 +81,7 @@
 				
 				<br>
 				<i><p align="center" id="review1"> </p></i>
+				<a onclick="confirmRestaurant(1)" id="confirm1">Go Here!</a>
 				
 				<hr>
 				<div>
@@ -89,6 +91,7 @@
 				Rating: <b id="rating2"></b>
 				<br>
 				<em><p align="center" id="review2"> </p>
+				<a onclick="confirmRestaurant(2)" id="confirm2">Go Here!</a>
 				<br>
               </font>
 
@@ -102,6 +105,7 @@
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 <script>
 	var latlon;
+	var id, id1, id2;
 	var pubnub = new PubNub({
 		publish_key:'pub-c-2c436bc0-666e-4975-baaf-63f16a61558d',
 		subscribe_key:'sub-c-0442432a-3312-11e7-bae3-02ee2ddab7fe',
@@ -124,6 +128,9 @@
 			var dest_addr = str.replace(' ', '+');
 			var dest_addr1 = str1.replace(' ', '+');
 			var dest_addr2 = str2.replace(' ', '+');
+			id = message[0]['id'];
+			id1 = message[1]['id'];
+			id2 = message[2]['id'];
 
 			document.getElementById("map").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=" + dest_addr + "&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
 			document.getElementById("map1").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=" + dest_addr1 + "&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
@@ -141,13 +148,17 @@
 			$("#load1").html("");
 			$("#load2").html("");
 			
-			$("#review").html('"'+message[0]['review'][0]+'" (read more)');
-			$("#review1").html('"'+message[1]['review'][0]+'" (read more)');
-			$("#review2").html('"'+message[2]['review'][0]+'" (read more)');
+			$("#review").html('"'+message[0]['review'][0]+'" <a>(read more)</a>');
+			$("#review1").html('"'+message[1]['review'][0]+'" <a>(read more)</a>');
+			$("#review2").html('"'+message[2]['review'][0]+'" <a>(read more)</a>');
 			
 			$("#review").click(function() {window.open(message[0]['review'][1])});
 			$("#review1").click(function() {window.open(message[1]['review'][1])});
 			$("#review2").click(function() {window.open(message[2]['review'][1])});
+			
+			$('#confirm').click();
+			$('#confirm1').click();
+			$('#confirm2').click();
 			
 			$("#name").html(message[0]['name']);
 			$('#rating').html(message[0]['rating']);
@@ -172,9 +183,28 @@
     latlon = lat + "," + lon;
 	pubnub.publish({
 		channel : 'secondary_channel',
-		message : {'latitude': lat, 'longitude': lon}
+		message : { 'cmdtype' : 'request', //request to suggest restaurants
+					'latitude' : lat, 
+					'longitude': lon }
 	});
   }
+  
+	function confirmRestaurant(num) {
+		//num is the 1st, 2nd, or 3rd restaurant
+		if (num==0)
+			curr_id = id;
+		else if (num==1)
+			curr_id = id1;
+		else if (num==2)
+			curr_id = id2;
+			
+		console.log(curr_id);
+		pubnub.publish({
+		channel : 'secondary_channel',
+		message : { 'cmdtype' : 'append', //request to suggest restaurants
+					'id' : curr_id}
+		});
+	}
 
     $(document).ready(getLocation());
 
