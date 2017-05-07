@@ -193,7 +193,7 @@ a[href^="tel:"] {
   }
 }
 .indents-5 {
-  padding: 0 10% 0 0;
+  padding: 0 100px 0 0;
 }
 @media (max-width: 1199px) {
   .indents-5 {
