@@ -34,7 +34,8 @@ def process(coord_lat, coord_long):
     nblist = []
     for i in range(3):
         nblist.append(businesslist[scorelist.index(max(scorelist))])
-        scorelist.pop(scorelist.index(max(scorelist)))
         businesslist.pop(scorelist.index(max(scorelist)))
+        scorelist.pop(scorelist.index(max(scorelist)))
+        
     #print(nblist)
     return nblist
