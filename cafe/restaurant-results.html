@@ -66,10 +66,10 @@
                 <p align="left";> Review: </p> <span style="margin-left: 5em";><iframe width="600" height="450" frameborder="0" style="border:0" id = "map" allowfullscreen></iframe> </p></span>
                 <br>
                 <p align="left">#2: Placeholder <span style="margin-left: 5em";> Star Rating </p></span>
-                <p align="left"> Review: </p>
+                <p align="left"> Review: </p> <span style="margin-left: 5em";><iframe width="600" height="450" frameborder="0" style="border:0" id = "map1" allowfullscreen></iframe> </p></span>
                 <br>
                 <p align="left" alt="">#3: Placeholder <span style="margin-left: 5em";> Star Rating </p></span>
-                <p align="left"> Review: </p>
+                <p align="left"> Review: </p> <span style="margin-left: 5em";><iframe width="600" height="450" frameborder="0" style="border:0" id = "map2" allowfullscreen></iframe> </p></span>
                 <br>
               </font>
               </div>
@@ -86,6 +86,8 @@
   function showPosition(position){
     var latlon = position.coords.latitude + "," + position.coords.longitude;
     document.getElementById("map").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+    document.getElementById("map1").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
+    document.getElementById("map2").setAttribute("src","https://www.google.com/maps/embed/v1/directions?origin=" + latlon + "&destination=Universal+Studios+Hollywood&key=AIzaSyAICh3_qJtWvnZpHT3db32LzsmVUEmqzJ4");
   }
 
     $(document).ready(getLocation());
