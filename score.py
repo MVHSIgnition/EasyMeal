@@ -4,7 +4,7 @@ import pickle
 
 def calculate_score(restaurant):
     score = 1
-    with open("restaurant_file.dat", "rb") as f:
+    with open("restaurant_data.dat", "rb") as f:
         previous_restaurants = pickle.load(f)
     previous_restaurants = previous_restaurants[-10:]
     category_list = []
@@ -15,4 +15,6 @@ def calculate_score(restaurant):
         score += category_list.count(category)
 
     score *= restaurant[2]
+
+    return score
     
