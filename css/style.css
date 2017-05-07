@@ -664,6 +664,45 @@ main {
 .well__offset-4 {
   padding: 116px 0 129px 0;
 }
+
+/*==================    Loader    ======================*/
+#loader {
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  z-index: 1;
+  width: 150px;
+  height: 150px;
+  margin: -75px 0 0 -75px;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 120px;
+  height: 120px;
+  -webkit-animation: spin 2s linear infinite;
+  animation: spin 2s linear infinite;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.animate-bottom {
+  position: relative;
+  -webkit-animation-name: animatebottom;
+  -webkit-animation-duration: 1s;
+  animation-name: animatebottom;
+  animation-duration: 1s
+}
+
+@-webkit-keyframes animatebottom {
+  from { bottom:-100px; opacity:0 } 
+  to { bottom:0px; opacity:1 }
+}
+
+@keyframes animatebottom { 
+  from{ bottom:-100px; opacity:0 } 
+  to{ bottom:0; opacity:1 }
+}
 /*==================    Buttons    ======================*/
 
 .btn {
@@ -678,6 +717,29 @@ main {
   border-style: solid;
   border-radius: 8px;
   border-color: black;
+}
+
+.btn-main {
+  text-align: center;
+  font-family: 'Yesteryear', cursive;
+  font-size: 62px;
+  line-height: 80px;
+  font-weight: 300;
+  color: white;
+  background-color: Transparent;
+  padding: 10px;
+  border-style: solid;
+  border-radius: 8px;
+  border-color: black;
+}
+
+.btn-main:hover {
+	color: #DBDBDB;
+}
+
+.btn-main:hover:before {
+  left: 0;
+  opacity: 1;
 }
 
 .lt-ie9 .btn:before,
@@ -1077,6 +1139,7 @@ a{
 	background-color:rgba(50,50,50,0.5);
 }
 
+/*
 .button{
 	position:relative;
 	font-size:17px;
@@ -1095,9 +1158,10 @@ a{
 .button:active{
    margin: 53px 70px;
 }
+
 .button:hover{
 	background:#C40532;
-}
+}*/
 form{
 	display:block;
 	margin:30px;
@@ -1115,8 +1179,9 @@ input{
 	border:2px solid #ccc ;
 	border-radius:3px;
 }
+
 button{
-	float: right;
+	/*float: right;*/
 	padding: 8px 12px;
 	margin-top: 15px;
 	background: #823f3f;
@@ -1126,11 +1191,11 @@ button{
 	border-radius: 3px;
 	cursor: pointer;
 }
-button:active{
+/*button:active{
 	margin: 18px 10px;
-}
+}*/
 button:hover{
-	background-color: #823f3f;
+	background-color: #8F4D4D;
 }
 #forgot-link{
 	font-size: 14px;
