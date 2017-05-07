@@ -1,5 +1,5 @@
 #return score of restaurant
-#[ [categories], price, rating, name, address ]
+#[ [categories], price, rating, name, location ]
 import pickle
 
 def calculate_score(restaurant):
