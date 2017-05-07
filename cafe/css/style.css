@@ -996,11 +996,11 @@ footer .tm {
 }
 * + .box-4 {
   margin-top: 50px;
-  margin-left: 50px;
+  margin-left: 10%;
 }
 .box-4 h2 + * {
   margin-top: 50px;
-  margin-left: 50px
+  margin-left: 10%;
 }
 /*==================  GOOGLE MAP  ======================*/
 * + .map {
