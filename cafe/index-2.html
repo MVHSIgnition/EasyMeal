@@ -73,19 +73,19 @@
     function getLocation() {
       if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(showPosition);
+          var latitude = position.coords.latitude;
+          var longitude = position.coords.longitude;
       } else {
-          x.innerHTML = "Geolocation is not supported by this browser.";
+          x.innerHTML = "Geolocation is not supported by this browser."
+
+
       }
     }
+    function setCookies(latitude, longitude){
+      document.cookie = latitude + "," + longitude;
+    }
 
-    function showPosition(position) {
-      x.innerHTML = "Latitude: " + position.coords.latitude +
-      "<br>Longitude: " + position.coords.longitude;
-    }
-    function save() {
-      sessionStorage.setItem(position.coords.latitude, position.coords.longitude)
-      console.log(sessionStorage)
-    }
+
 
 
 </script>
