@@ -52,7 +52,7 @@ GRANT_TYPE = 'client_credentials'
 
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
-DEFAULT_LOCATION = 'San Francisco, CA'
+DEFAULT_LOCATION = 'Los Altos, CA'
 SEARCH_LIMIT = 3
 
 
@@ -173,6 +173,7 @@ def query_api(term, location):
     choice = input("?: ")
 
     business_id = businesses[int(choice)]['id']
+    print(business_id)
     
 ##    print(u'{0} businesses found, querying business info ' \
 ##        'for the top result "{1}" ...'.format(
@@ -199,7 +200,15 @@ def main():
 
     try:
         response = query_api(term, input_values.location)
-        restaurants.append(response)
+        #pprint.pprint(response)
+
+        categories = [category['alias'] for category in response['categories']]
+        price = response['price'].count('$')
+        rating = response['rating']
+        name = response['name']
+        location = response['location']
+        
+        restaurants.append([categories, price, rating, name, location])
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
@@ -216,7 +225,7 @@ if __name__ == '__main__':
         main()
         if input("exit? y/n ") == "y":
             #pprint.pprint(restaurants)
-            with open('user_data.dat', 'rb') as f:
+            with open('restaurant_data.dat', 'rb') as f:
                 l = pickle.load(f)
 
             for i in restaurants:
@@ -224,6 +233,6 @@ if __name__ == '__main__':
 
             pprint.pprint(l)
                 
-            with open('user_data.dat', 'ab') as f:
+            with open('restaurant_data.dat', 'ab') as f:
                 pickle.dump(l, f)
             break
