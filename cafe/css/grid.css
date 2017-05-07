@@ -147,6 +147,7 @@ table {
 }
 .boxed {
   border: 1px;
+  font-size: 8px;
 }
 /*
 .btnbox {
