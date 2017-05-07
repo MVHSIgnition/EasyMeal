@@ -150,9 +150,10 @@ table {
 }
 .btnbox {
   width: 875px;
-  border: 10px solid black;
+  border: 8px solid black;
   padding: 35px;
   margin: 25px;
+  background-color: white;
 }
 .container:after,
 .container-fluid:after,
