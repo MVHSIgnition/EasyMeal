@@ -1,3 +1,8 @@
+import sys
+try:
+    sys.path.append('/opt/python3/lib/python3.4/site-packages')
+except:
+    pass
 import calc
 
 pub_key = 'pub-c-2c436bc0-666e-4975-baaf-63f16a61558d'
