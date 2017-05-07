@@ -17,11 +17,12 @@ def process(coord_lat="", coord_long="", city=""):
 
     price = int(find_price.find_best_next(x_vals,y_vals))
     print('price: ',price)
-
+    print(city)
     if city == "":
         businesses = yelp_api.get_nearby_restaurants(coord_lat,coord_long)
     else:
-        businesses = yelp_api.get_nearby_restaurants(city)
+        print("searching sittyS")
+        businesses = yelp_api.get_nearby_restaurants(city=city)
     #print(businesses)
     scorelist = []
     businesslist = []
@@ -36,9 +37,12 @@ def process(coord_lat="", coord_long="", city=""):
             pass
     nblist = []
     for i in range(3):
-        nblist.append(businesslist[scorelist.index(max(scorelist))])
-        businesslist.pop(scorelist.index(max(scorelist)))
-        scorelist.pop(scorelist.index(max(scorelist)))
+        try:
+            nblist.append(businesslist[scorelist.index(max(scorelist))])
+            businesslist.pop(scorelist.index(max(scorelist)))
+            scorelist.pop(scorelist.index(max(scorelist)))
+        except:
+            nblist.append(nblist[0])
         
     #print(nblist)
     return nblist

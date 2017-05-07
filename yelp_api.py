@@ -114,7 +114,7 @@ def request(host, path, bearer_token, url_params=None):
     return response.json()
 
 
-def search(bearer_token, term='', location='', latitude='', longitude='', search_limit=3, radius=16000):
+def search(bearer_token, term='', location='', latitude='', longitude='', search_limit=3, radius=40000):
     """Query the Search API by a search term and location.
 
     Args:
@@ -140,7 +140,9 @@ def search(bearer_token, term='', location='', latitude='', longitude='', search
             'location': location.replace(' ', '+'),
             'radius_filter': radius
         }
-        
+
+        print('urlp')   
+        print(url_params)
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -201,7 +203,7 @@ def query_api(term, location):
 def get_nearby_restaurants(latitude="", longitude="", city=""):
     bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
 
-    response = search(bearer_token, latitude=latitude, longitude=longitude)
+    response = search(bearer_token, latitude=latitude, longitude=longitude, location=city)
 
     businesses = response.get('businesses')
 

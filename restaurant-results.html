@@ -224,7 +224,7 @@
 	console.log('city is not null');
 	pubnub.publish({
 		channel : 'secondary_channel',
-		message : { 'cmdtype' : 'request_city', //request to suggest restaurants
+		message : { 'cmdtype' : 'request', //request to suggest restaurants
 					'city' : city }
 	});
 	}
