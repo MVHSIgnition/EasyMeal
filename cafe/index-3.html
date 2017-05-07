@@ -80,14 +80,14 @@
                             <div class="contact-form-loader"></div>
                             <fieldset>
                                 <label class="name">
-                                    First_Name Name:
+                                    First_Name:
                                     <input type="text" name="First_Name" placeholder="" value=""
                                            data-constraints="@Required @JustLetters"/>
                                     <span class="empty-message">*This field is required.</span>
                                     <span class="error-message">*This is not a valid name.</span>
                                 </label>
                                 <label class="name">
-                                    Last_Name Name:
+                                    Last_Name:
                                     <input type="text" name="Last_Name" placeholder="" value=""
                                            data-constraints="@Required @JustLetters"/>
                                     <span class="empty-message">*This field is required.</span>
@@ -103,15 +103,15 @@
 
                                 <label class="Username">
                                     Username:
-                                    <input type="Username" name="Username" placeholder="" value=""
-                                           data-constraints="@Required"/>
+                                    <input type="text" name="Username" placeholder="" value=""
+                                           data-constraints="@Required "/>
                                     <span class="empty-message">*This field is required.</span>
-                                    <span class="error-message">*This is not a valid phone.</span>
+                                    <span class="error-message">*This is not a valid username.</span>
                                 </label>
 
                                 <label class="Password">
                                     Password:
-                                    <textarea name="Password" placeholder=""
+                                    <textarea type="text" name="Password" placeholder=""
                                               data-constraints='@Required @Length(min=8,max=50)'></textarea>
                                     <span class="empty-message">*This field is required.</span>
                                     <span class="error-message">*Your password must be more than 8 charachters.</span>
