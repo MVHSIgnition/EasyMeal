@@ -52,8 +52,7 @@ GRANT_TYPE = 'client_credentials'
 
 # Defaults for our simple example.
 DEFAULT_TERM = 'dinner'
-DEFAULT_LOCATION = 'San Francisco, CA'
-SEARCH_LIMIT = 3
+DEFAULT_LOCATION = 'Los Altos, CA'
 
 
 def obtain_bearer_token(host, path):
@@ -114,7 +113,7 @@ def request(host, path, bearer_token, url_params=None):
     return response.json()
 
 
-def search(bearer_token, term, location):
+def search(bearer_token, term='', location='', latitude='', longitude='', search_limit=3, radius=16000):
     """Query the Search API by a search term and location.
 
     Args:
@@ -126,10 +125,14 @@ def search(bearer_token, term, location):
     """
 
     url_params = {
-        'term': term.replace(' ', '+'),
-        'location': location.replace(' ', '+'),
-        'limit': SEARCH_LIMIT
+##        'term': term.replace(' ', '+'),
+##        'location': location.replace(' ', '+'),
+##        'limit': search_limit,
+        'latitude': latitude,
+        'longitude': longitude,
+        'radius_filter': radius
     }
+    
     return request(API_HOST, SEARCH_PATH, bearer_token, url_params=url_params)
 
 
@@ -166,17 +169,20 @@ def query_api(term, location):
 
     
     
-    print('which restaurant?')
-    for i, b in enumerate(businesses):
-        print('{0}. {1}'.format(i, b['name']))
-
-    choice = input("?: ")
-
-    business_id = businesses[int(choice)]['id']
+##    print('which restaurant?')
+##    for i, b in enumerate(businesses):
+##        print('{0}. {1}'.format(i, b['name']))
+##
+##    choice = input("?: ")
+##
+##    business_id = businesses[int(choice)]['id']
+##    print(business_id)
     
 ##    print(u'{0} businesses found, querying business info ' \
 ##        'for the top result "{1}" ...'.format(
 ##            len(businesses), business_id))
+    business_id = businesses[0]['id']
+    
     response = get_business(bearer_token, business_id)
 
     print(u'Result for business "{0}" found:'.format(business_id))
@@ -184,6 +190,27 @@ def query_api(term, location):
 
     return response
 
+def get_nearby_restaurants(latitude, longitude):
+    bearer_token = obtain_bearer_token(API_HOST, TOKEN_PATH)
+
+    response = search(bearer_token, latitude=latitude, longitude=longitude)
+
+    businesses = response.get('businesses')
+
+    if not businesses:
+        print('no businesses found')
+        return
+
+    return businesses
+
+def convertFormat(response):
+    categories = [category['alias'] for category in response['categories']]
+    price = response['price'].count('$')
+    rating = response['rating']
+    name = response['name']
+    location = response['location']
+
+    return [categories, price, rating, name, location]
 
 def main():
     parser = argparse.ArgumentParser()
@@ -199,7 +226,10 @@ def main():
 
     try:
         response = query_api(term, input_values.location)
-        restaurants.append(response)
+        #pprint.pprint(response)
+        data = convertFormat(response)
+        
+        restaurants.append(data)
     except HTTPError as error:
         sys.exit(
             'Encountered HTTP error {0} on {1}:\n {2}\nAbort program.'.format(
@@ -216,7 +246,7 @@ if __name__ == '__main__':
         main()
         if input("exit? y/n ") == "y":
             #pprint.pprint(restaurants)
-            with open('user_data.dat', 'rb') as f:
+            with open('restaurant_data.dat', 'rb') as f:
                 l = pickle.load(f)
 
             for i in restaurants:
@@ -224,6 +254,6 @@ if __name__ == '__main__':
 
             pprint.pprint(l)
                 
-            with open('user_data.dat', 'ab') as f:
+            with open('restaurant_data.dat', 'wb') as f:
                 pickle.dump(l, f)
             break
