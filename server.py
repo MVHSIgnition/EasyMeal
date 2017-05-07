@@ -27,9 +27,9 @@ class subscribeCallback(SubscribeCallback):
         pass  # handle incoming presence data
     def message(self, pubnub, message):
         best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
-        review = yelp_api.get_business_review(best_restaurant[0]['id'])
-        review1 = yelp_api.get_business_review(best_restaurant[1]['id'])
-        review2 = yelp_api.get_business_review(best_restaurant[2]['id'])
+        review = yelp_api.get_business_review(best_restaurants[0]['id'])
+        review1 = yelp_api.get_business_review(best_restaurants[1]['id'])
+        review2 = yelp_api.get_business_review(best_restaurants[2]['id'])
         
         loc = best_restaurants[0]['location']
         name = best_restaurants[0]['name']

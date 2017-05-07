@@ -88,7 +88,7 @@
 				</div>
 				Rating: <b id="rating2"></b>
 				<br>
-				<i><p align="center" id="review2"> </p></i>
+				<em><p align="center" id="review2"> </p>
 				<br>
               </font>
 
@@ -141,9 +141,13 @@
 			$("#load1").html("");
 			$("#load2").html("");
 			
-			$("#review").html('"'+message[0]['review']+'"');
-			$("#review1").html('"'+message[1]['review']+'"');
-			$("#review2").html('"'+message[2]['review']+'"');
+			$("#review").html('"'+message[0]['review'][0]+'"');
+			$("#review1").html('"'+message[1]['review'][0]+'"');
+			$("#review2").html('"'+message[2]['review'][0]+'"');
+			
+			$("#review").onclick(window.open(message[0]['review'][1]))
+			$("#review1").onclick(window.open(message[1]['review'][1]))
+			$("#review2").onclick(window.open(message[2]['review'][1]))
 			
 			$("#name").html(message[0]['name']);
 			$('#rating').html(message[0]['rating']);
