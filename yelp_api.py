@@ -114,7 +114,7 @@ def request(host, path, bearer_token, url_params=None):
     return response.json()
 
 
-def search(bearer_token, term='', location='', latitude='', longitude='', search_limit=3, radius=40000):
+def search(bearer_token, term='', location='', latitude='', longitude='', search_limit=3, radius=16000):
     """Query the Search API by a search term and location.
 
     Args:

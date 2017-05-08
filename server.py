@@ -28,9 +28,12 @@ class subscribeCallback(SubscribeCallback):
         pass  # handle incoming presence data
     def message(self, pubnub, message):
         if message.message['cmdtype'] == "request":
+            print(message.message)
             try:
+                print('searching current loc')
                 best_restaurants = calc.process(message.message['latitude'],message.message['longitude'])
             except:
+                print('searching city')
                 print(message.message['city'].replace("%20", "+"))
                 best_restaurants = calc.process(city=message.message['city'].replace("%20", "+"))
             review = yelp_api.get_business_review(best_restaurants[0]['id'])
