@@ -36,13 +36,15 @@ def process(coord_lat="", coord_long="", city=""):
         except:
             pass
     nblist = []
+    
     for i in range(3):
         try:
             nblist.append(businesslist[scorelist.index(max(scorelist))])
             businesslist.pop(scorelist.index(max(scorelist)))
             scorelist.pop(scorelist.index(max(scorelist)))
+            print(nblist)
         except:
             nblist.append(nblist[0])
-        
+            print(nblist)
     #print(nblist)
     return nblist
