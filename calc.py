@@ -37,6 +37,7 @@ def process(coord_lat="", coord_long="", city=""):
             # this means that the business does not have an entry for "price" 
             pass
     nblist = []
+    
     for i in range(3):
         print(scorelist)
         try:
