@@ -34,15 +34,19 @@ def process(coord_lat="", coord_long="", city=""):
                 scorelist.append(score.calculate_score(yelp_api.convertFormat(business)))
                 businesslist.append(business)
         except:
+            # this means that the business does not have an entry for "price" 
             pass
     nblist = []
+    
     for i in range(3):
+        print(scorelist)
         try:
-            nblist.append(businesslist[scorelist.index(max(scorelist))])
-            businesslist.pop(scorelist.index(max(scorelist)))
-            scorelist.pop(scorelist.index(max(scorelist)))
+            index = scorelist.index(max(scorelist))
+            nblist.append(businesslist[index])
+            businesslist.pop(index)
+            scorelist.pop(index)
         except:
-            nblist.append(nblist[0])
+            nblist.append(None)
         
     #print(nblist)
     return nblist
